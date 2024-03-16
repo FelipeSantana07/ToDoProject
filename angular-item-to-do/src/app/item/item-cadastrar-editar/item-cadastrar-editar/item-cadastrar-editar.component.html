@@ -1,0 +1,24 @@
+<mat-toolbar>{{(item && item.id)?'Editar tarefa':'Criar tarefa'}}</mat-toolbar>
+
+<div class="componente-container">
+    <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()"
+        novalidate>
+        <mat-form-field>
+            <input matInput placeholder="Conteudo da tarefa" formControlName="body" required autocomplete="off">
+            <mat-error>Campo é obrigatório</mat-error>
+        </mat-form-field>
+        <div>
+            <mat-radio-group>
+                <mat-radio-button value="false" (click)="fooPendente()">Pendente</mat-radio-button>
+                <mat-radio-button value="true" (click)="fooConcluida()">Concluída</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="linha-botoes">
+            <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Salvar</button>
+            <button *ngIf="item && item.id" type="button" color="warn" mat-raised-button
+                (click)="deletar()">Deletar</button>
+            <button type="button" mat-raised-button routerLink="/itens">Cancelar</button>
+        </div>
+    </form>
+    <form action=""></form>
+</div>

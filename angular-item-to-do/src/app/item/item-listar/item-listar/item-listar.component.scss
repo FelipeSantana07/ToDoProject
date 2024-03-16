@@ -1,0 +1,78 @@
+table {
+    width: 100%;
+}
+
+
+th{
+    font-size: large;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none; 
+    color: #222; 
+    font-size: medium;
+    font-weight: 400;
+}
+
+.done{
+    background-color: rgb(214, 250, 214);
+}
+
+.do{
+    background-color: rgb(252, 248, 198);
+}
+
+.btn-criar{
+    margin: 16px 0;
+}
+
+.mat-column-id{
+    width: 32px;
+    border-right: 1px solid #bebebe;
+    // padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-status{
+    width: 130px;
+    border-right: 1px solid #bebebe;
+    // padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-body{
+    border-right: 1px solid #bebebe;
+    // padding-right: 24px;
+    text-align: left;
+}
+
+.mat-column-editar{
+    width: 42px;
+    border-right: 1px solid #bebebe;
+    // padding-right: 24px;
+    text-align: center;
+    background-color: #eeeeee;
+    a{
+        padding: 0 4px;
+    }
+}
+
+.table-container {
+    min-height: 300px;
+    max-height: 300px;
+    overflow: auto !important;
+    background-color: white;
+}
+
+.spinner {
+    position: relative;
+    margin-left: 45%;
+    margin-top: 10%;
+}
+
+.mensagem-sem-registros {
+    position: relative;
+    margin-left: 30%;
+    margin-top: 10%;
+}

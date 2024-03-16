@@ -1,0 +1,54 @@
+<mat-toolbar><h1>Lista de tarefas</h1></mat-toolbar>
+
+<div class="componente-container">
+    <div class="table-container">
+        <table mat-table [dataSource]="page.content" matSort (matSortChange)="sortEvent = $event; listarItens()">
+            <caption class="clipped">
+                Tabela com lista de tarefa
+            </caption>
+            <ng-container matColumnDef="id">
+            <th scope="col" mat-header-cell *matHeaderCellDef >ID</th>
+                <td mat-cell *matCellDef="let item">
+                    <a routerLink="/itens/editar/{{ item.id }}">{{ item.id }}</a>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <th scope="col" mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let item">
+                    <a routerLink="/itens/editar/{{ item.id }}" class="item-status" id="{{ item.id }}"> {{ item.status }}</a>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="body">
+                <th scope="col" mat-header-cell *matHeaderCellDef>Tasks</th>
+                <td mat-cell *matCellDef="let item">
+                    <a routerLink="/itens/editar/{{ item.id }}">{{ item.body }}</a>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="editar">
+                <th scope="col" mat-header-cell *matHeaderCellDef>#</th>
+                <td mat-cell *matCellDef="let item">
+                    <a routerLink="/itens/editar/{{ item.id }}">✏️</a>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+            <tr mat-row *matRowDef="let row; columns: colunasTabela" [hidden]="carregando"></tr>
+        </table>
+        <div *ngIf="carregando" class="spinner">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!carregando && page.totalElements === 0" class="mensagem-sem-registros">
+            Nenhum registro carregado
+        </div>
+    </div>
+    <mat-paginator
+        *ngIf="page.totalElements > 0"
+        [length]="page.totalElements"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="pageEvent = $event; listarItens()"
+    >
+    </mat-paginator>
+    <div class="btn-criar">
+        <button mat-raised-button color="primary" routerLink="/itens/cadastrar">Criar tarefa</button>
+    </div>
+</div>
